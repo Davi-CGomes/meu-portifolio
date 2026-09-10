@@ -6,11 +6,6 @@ export const projects = [
     description: 'Coleta, tratamento e análise de dados de imóveis de Petrolina utilizando Web Scraping e Python.',
     details: 'Projeto com 1.357 anúncios coletados, exploração dos dados e análise de preços para encontrar padrões do mercado.',
     tags: ['Python', 'BeautifulSoup', 'Pandas', 'Web Scraping'],
-    images: [
-      `${import.meta.env.BASE_URL}images/projects/imobiliario/imob1.jpg`,
-      `${import.meta.env.BASE_URL}images/projects/imobiliario/imob2.jpg`,
-      `${import.meta.env.BASE_URL}images/projects/imobiliario/imob3.jpg`
-  ],
     github: 'https://github.com/Davi-CGomes/analise-imoveis-petrolina',
     linkedin: 'https://www.linkedin.com/posts/davicgomes_dados-python-webscraping-ugcPost-7501643609918570496-8Z3A/'
   },
@@ -21,7 +16,6 @@ export const projects = [
     description: 'Pipeline de classificação para prever a sobrevivência de passageiros do Titanic.',
     details: 'Inclui análise exploratória, tratamento de dados, engenharia de atributos, GridSearchCV e comparação de algoritmos supervisionados.',
     tags: ['Python', 'Pandas', 'Scikit-learn', 'Kaggle'],
-    images: [`${import.meta.env.BASE_URL}images/projects/titanic/titanic.png`],
     github: 'https://github.com/Davi-CGomes',
     linkedin: 'https://www.linkedin.com/feed/update/urn:li:activity:7455334789668106240/'
   },
@@ -32,7 +26,6 @@ export const projects = [
     description: 'Agente autônomo que aprende a jogar Flappy Bird por meio de neuroevolução.',
     details: 'A rede recebe posição do pássaro e distâncias aos obstáculos e evolui populações por seleção, cruzamento e mutação.',
     tags: ['Python', 'Pygame', 'NEAT', 'Redes Neurais'],
-    images: [`${import.meta.env.BASE_URL}images/projects/flappy-bird/flappy-bird.jpg`],
     github: 'https://github.com/Davi-CGomes',
     linkedin: 'https://www.linkedin.com/feed/update/urn:li:activity:7446664730888376320/'
   }
