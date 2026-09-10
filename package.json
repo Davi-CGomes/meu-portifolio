@@ -1,15 +1,18 @@
 {
-  "homepage": "https://davi-cgomes.github.io/meu-portifolio/",
   "name": "davi-gomes-portfolio",
+  "homepage": "https://Davi-CGomes.github.io/meu-portifolio/",
   "private": true,
   "version": "1.0.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist"
   },
   "dependencies": {
+    "gh-pages": "^6.3.0",
     "vue": "^3.5.41"
   },
   "devDependencies": {
