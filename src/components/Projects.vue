@@ -3,7 +3,6 @@ import { ref, computed } from 'vue'
 import { projects } from '../data'
 
 const activeFilter = ref('Todos')
-const currentImages = ref({})
 
 const filters = ['Todos', 'Dados', 'Machine Learning', 'IA']
 
@@ -13,43 +12,6 @@ const filteredProjects = computed(() =>
     : projects.filter(project => project.category === activeFilter.value)
 )
 
-function getProjectImages(project) {
-  return project.images || []
-}
-
-function getCurrentIndex(project) {
-  const images = getProjectImages(project)
-  if (!images.length) return 0
-
-  const index = currentImages.value[project.title] ?? 0
-  return Math.min(index, images.length - 1)
-}
-
-function getCurrentImage(project) {
-  const images = getProjectImages(project)
-  if (!images.length) return ''
-  return images[getCurrentIndex(project)]
-}
-
-function nextImage(project) {
-  const images = getProjectImages(project)
-  if (images.length < 2) return
-
-  const current = getCurrentIndex(project)
-  currentImages.value[project.title] = (current + 1) % images.length
-}
-
-function previousImage(project) {
-  const images = getProjectImages(project)
-  if (images.length < 2) return
-
-  const current = getCurrentIndex(project)
-  currentImages.value[project.title] = (current - 1 + images.length) % images.length
-}
-
-function setImage(project, index) {
-  currentImages.value[project.title] = index
-}
 </script>
 
 <template>
@@ -86,52 +48,6 @@ function setImage(project, index) {
           <div class="project-top">
             <span class="project-number">{{ project.number }}</span>
             <span class="project-category">{{ project.category }}</span>
-          </div>
-
-          <div class="project-image">
-            <template v-if="getProjectImages(project).length">
-              <img
-                :src="getCurrentImage(project)"
-                :alt="`Imagem do projeto ${project.title}`"
-                loading="lazy"
-              />
-
-              <template v-if="getProjectImages(project).length > 1">
-                <button
-                  class="carousel-arrow carousel-prev"
-                  type="button"
-                  aria-label="Imagem anterior"
-                  @click="previousImage(project)"
-                >
-                  ‹
-                </button>
-
-                <button
-                  class="carousel-arrow carousel-next"
-                  type="button"
-                  aria-label="Próxima imagem"
-                  @click="nextImage(project)"
-                >
-                  ›
-                </button>
-
-                <div class="carousel-dots" aria-label="Selecionar imagem">
-                  <button
-                    v-for="(_, index) in getProjectImages(project)"
-                    :key="index"
-                    type="button"
-                    :class="{ active: getCurrentIndex(project) === index }"
-                    :aria-label="`Ir para imagem ${index + 1}`"
-                    @click="setImage(project, index)"
-                  />
-                </div>
-              </template>
-            </template>
-
-            <div v-else class="project-image-placeholder">
-              <span>{{ project.number }}</span>
-              <strong>Imagem do projeto</strong>
-            </div>
           </div>
 
           <div class="project-body">
